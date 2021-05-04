@@ -6,3 +6,47 @@ html{
 *::after{
     box-sizing: inherit;
 }
+
+a{
+    display: inline-block;
+    text-decoration: none;
+}
+ul,
+li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+}
+.header__inner {
+    max-width: 680px;
+    width: 100%;
+}
+.header__logo {
+     transform: translateY(15%);
+}
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    align-items: baseline;
+    margin: 100px 100px 234px 100px;
+    font-size: 16px;
+    line-height: 26px;
+    ul {
+        li {
+            display: inline-block;
+        }
+        li + li {
+            margin-left: 30px;
+        }
+    }
+}
