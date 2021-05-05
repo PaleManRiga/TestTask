@@ -49,7 +49,7 @@ gulp.task('js', function () {
 gulp.task('browser-sync', function () {
     browserSync.init({
         server: {
-            baseDir: "app/"
+            baseDir: "app/",
         }
     });
 });
