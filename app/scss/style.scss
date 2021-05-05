@@ -1,3 +1,5 @@
+@import 'fonts';
+
 html{
     box-sizing: border-box;
 }
@@ -10,6 +12,10 @@ html{
 a{
     display: inline-block;
     text-decoration: none;
+    color: #000;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 ul,
 li{
@@ -18,10 +24,84 @@ li{
     list-style: none;
 }
 
-.container {
-    max-width: 1920px;
-    margin: 0 auto;
-}
+// .container {
+//     max-width: 1920px;
+//     margin: 0 auto;
+// }
+
+
+// Custom Checkbox
+
+/* Customize the label (the container) */
+.label__container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .label__container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .header__content-checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .label__container:hover input ~ .header__content-checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .label__container input:checked ~ .header__content-checkmark {
+    background-color: #4066A5;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .header__content-checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .label__container input:checked ~ .header__content-checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .label__container .header__content-checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+// Custom Checkbox end
+
 
 .header {
     display: flex;
@@ -29,6 +109,8 @@ li{
 .header__inner {
     max-width: 680px;
     width: 100%;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F2F5FA 100%);
+    z-index: 1;
 }
 .header__logo {
      transform: translateY(15%);
@@ -41,6 +123,9 @@ li{
     margin: 100px 100px 234px 100px;
     font-size: 16px;
     line-height: 26px;
+    img {
+        z-index: 3;
+    }
     ul {
         li {
             display: inline-block;
@@ -48,5 +133,210 @@ li{
         li + li {
             margin-left: 30px;
         }
+    }
+}
+
+.header__content {
+    margin-left: 140px;
+    margin-right: 141px;
+    &-heading {
+        font-family: Georgia, serif;
+        font-size: 32px;
+        line-height: 44px;
+        font-weight: 400;
+    }
+    &-text {
+        font-family: Arial, serif;
+        font-size: 16px;
+        line-height: 28px;
+        color: #6A707B;
+    }
+    form {
+        position: relative;
+        margin-top: 50px;
+        margin-bottom: 53px;
+        input {
+            border: solid 1px #E3E3E4;
+            border-left: solid 4px #4066A5;
+            padding: 23px 436px 23px 44px;  
+            margin-left: -44px;
+        }
+        button {
+            position: absolute;
+            top: 25px;
+            left: 560px;
+            border: none;
+            background-color: transparent;
+        }
+    }
+    
+    .label__container {
+        font-size: 16px;
+        line-height: 28px;
+        font-family: 'Arial', sans-serif;
+        color: #6A707B;
+        a {
+            text-decoration: underline;
+            color: #000;
+        }
+    }
+
+    .header__baseline{
+        border: 1px solid #E3E3E4;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .header__social {
+        display: flex;
+        justify-content: space-between;
+        max-width: 244px;
+        width: 100%;
+        margin: 0 auto;
+        li{
+            position: relative;
+            width: 46px;
+            height: 46px;
+            border: 1px solid #E3E3E4;
+            border-radius: 50%;
+        }
+        .header__social-facebook{
+            transition: all 0.5s;
+            position: relative;
+            width: 46px;
+            height: 46px;
+            border: 1px solid #E3E3E4;
+            border-radius: 50%;
+            &::before {
+                content: '\ea90';
+                font-family: 'icomoon';
+                position: absolute;
+                color: #131821;
+                opacity: 30%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            &:hover{
+                background-color: #4267B2;
+                box-shadow: 0px 20px 40px rgba(19, 24, 33, 0.3);
+                &::before{
+                    color: #FFFFFF;
+                    opacity: 100%;
+                }
+            }
+            &:focus {
+                transition: none;
+                background-color: #2F4A80;
+                &::before {
+                    color: #FFFFFF;
+                    opacity: 100%;
+                }
+            }
+        }
+        .header__social-instagram{
+            transition: all 0.5s;
+            position: relative;
+            width: 46px;
+            height: 46px;
+            border: 1px solid #E3E3E4;
+            border-radius: 50%;
+            &::before {
+                content: '\ea92';
+                font-family: 'icomoon';
+                position: absolute;
+                color: #131821;
+                opacity: 30%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            &:hover{
+                background-color: #C13584;
+                box-shadow: 0px 20px 40px rgba(19, 24, 33, 0.3);
+                &::before{
+                    color: #FFFFFF;
+                    opacity: 100%;
+                }
+            }
+            &:focus {
+                transition: none;
+                background-color: #8F2762;
+                &::before {
+                    color: #FFFFFF;
+                    opacity: 100%;
+                }
+            }
+            
+        }
+        .header__social-twitter{
+            transition: all 0.5s;
+            position: relative;
+            width: 46px;
+            height: 46px;
+            border: 1px solid #E3E3E4;
+            border-radius: 50%;
+            &::before {
+                content: '\ea96';
+                font-family: 'icomoon';
+                position: absolute;
+                color: #131821;
+                opacity: 30%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            &:hover{
+                background-color: #1DA1F2;
+                box-shadow: 0px 20px 40px rgba(19, 24, 33, 0.3);
+                &::before{
+                    color: #FFFFFF;
+                    opacity: 100%;
+                }
+            }
+            &:focus {
+                transition: none;
+                background-color: #177FBF;
+                &::before {
+                    color: #FFFFFF;
+                    opacity: 100%;
+                }
+            }
+        }
+        .header__social-youtube{
+            transition: all 0.5s;
+            position: relative;
+            width: 46px;
+            height: 46px;
+            border: 1px solid #E3E3E4;
+            border-radius: 50%;
+            &::before {
+                content: '\ea9d';
+                font-family: 'icomoon';
+                position: absolute;
+                color: #131821;
+                opacity: 30%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            &:hover{
+                background-color: #FF0000;
+                box-shadow: 0px 20px 40px rgba(19, 24, 33, 0.3);
+                &::before{
+                    color: #FFFFFF;
+                    opacity: 100%;
+                }
+            }
+            &:focus {
+                transition: none;
+                background-color: #CC0000;
+                &::before {
+                    color: #FFFFFF;
+                    opacity: 100%;
+                }
+            }
+        }
+        
     }
 }
