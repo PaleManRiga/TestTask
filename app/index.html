@@ -25,7 +25,7 @@
                 </ul>
             </nav>
 
-            <div class="header__mobile-bg">
+            <!-- <div class="header__mobile-bg">
                 
                 <div class="header__mobile-content">
                     
@@ -33,7 +33,7 @@
                     <p class="header__content-text">Subscribe to our newsletter and get 10% discount on pineapple
                         glasses.</p>
                     <form>
-                        <input type="text" placeholder="Type your email address here…" required>
+                        <input type="email" placeholder="Type your email address here…">
                         <button type="submit">
                             <img src="images/ic_arrow.svg" alt="">
                         </button>
@@ -62,7 +62,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> -->
 
 
 
@@ -79,21 +79,29 @@
                 </ul>
             </nav>
 
-            <div class="header__content">
+            <div class="header__content" id='header__content'>
                 <h1 class="header__content-heading">Subscribe to newsletter</h1>
                 <p class="header__content-text">Subscribe to our newsletter and get 10% discount on pineapple glasses.
                 </p>
-                <form>
-                    <input type="text" placeholder="Type your email address here…" required>
-                    <button type="submit">
-                        <img src="images/ic_arrow.svg" alt="">
-                    </button>
-                </form>
+                <div class="wrapper">
+                    <div class="form">
+                        <form action="#" id="form" class="form__input">
+                            <input type="text" id="formEmail" name="email" placeholder="Type your email address here…" class="form__input _req _email">
+                            <button class="input_btn" type="submit">
+                                <img src="images/ic_arrow.svg" alt="">
+                            </button>
+                            <span id="errorSpan"></span>
 
-                <label class="label__container">I agree to <a href="#">terms of service</a>
-                    <input type="checkbox" checked="checked">
-                    <span class="header__content-checkmark"></span>
-                </label>
+                            <div class="wrapper">
+                            <div class="checkbox">
+                                <input id="formAgreement" type="checkbox" name="agreement" class="checkbox__input _req">
+                                <label for="formAgreement" class="checkbox__lable" ><span> I agree to <a href="#">terms of service</a></span></label>
+                            </div>
+                        </div>
+
+                        </form>
+                    </div>
+                </div>
 
                 <div class="header__baseline"></div>
 
@@ -123,6 +131,7 @@
 
     <script src="js/libs.min.js"></script>
     <script src="js/main.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

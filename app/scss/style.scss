@@ -30,77 +30,77 @@ li{
 // }
 
 
-// Custom Checkbox
+// // Custom Checkbox
 
-/* Customize the label (the container) */
-.label__container {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+// /* Customize the label (the container) */
+// .label__container {
+//     display: block;
+//     position: relative;
+//     padding-left: 35px;
+//     margin-bottom: 12px;
+//     cursor: pointer;
+//     font-size: 22px;
+//     -webkit-user-select: none;
+//     -moz-user-select: none;
+//     -ms-user-select: none;
+//     user-select: none;
+//   }
   
-  /* Hide the browser's default checkbox */
-  .label__container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
+//   /* Hide the browser's default checkbox */
+//   .label__container input {
+//     position: absolute;
+//     opacity: 0;
+//     cursor: pointer;
+//     height: 0;
+//     width: 0;
+//   }
   
-  /* Create a custom checkbox */
-  .header__content-checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-  }
+//   /* Create a custom checkbox */
+//   .header__content-checkmark {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     height: 25px;
+//     width: 25px;
+//     background-color: #eee;
+//   }
   
-  /* On mouse-over, add a grey background color */
-  .label__container:hover input ~ .header__content-checkmark {
-    background-color: #ccc;
-  }
+//   /* On mouse-over, add a grey background color */
+//   .label__container:hover input ~ .header__content-checkmark {
+//     background-color: #ccc;
+//   }
   
-  /* When the checkbox is checked, add a blue background */
-  .label__container input:checked ~ .header__content-checkmark {
-    background-color: #4066A5;
-  }
+//   /* When the checkbox is checked, add a blue background */
+//   .label__container input:checked ~ .header__content-checkmark {
+//     background-color: #4066A5;
+//   }
   
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .header__content-checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
+//   /* Create the checkmark/indicator (hidden when not checked) */
+//   .header__content-checkmark:after {
+//     content: "";
+//     position: absolute;
+//     display: none;
+//   }
   
-  /* Show the checkmark when checked */
-  .label__container input:checked ~ .header__content-checkmark:after {
-    display: block;
-  }
+//   /* Show the checkmark when checked */
+//   .label__container input:checked ~ .header__content-checkmark:after {
+//     display: block;
+//   }
   
-  /* Style the checkmark/indicator */
-  .label__container .header__content-checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+//   /* Style the checkmark/indicator */
+//   .label__container .header__content-checkmark:after {
+//     left: 9px;
+//     top: 5px;
+//     width: 5px;
+//     height: 10px;
+//     border: solid white;
+//     border-width: 0 3px 3px 0;
+//     -webkit-transform: rotate(45deg);
+//     -ms-transform: rotate(45deg);
+//     transform: rotate(45deg);
+//   }
 
-// Custom Checkbox end
+// // Custom Checkbox end
 
 
 .header {
@@ -179,6 +179,54 @@ li{
             text-decoration: underline;
             color: #000;
         }
+    }
+
+    .checkbox {
+        margin-top: 20px;
+    }
+    .checkbox._error .checkbox__lable::before {
+            box-shadow: 0 0 15px red;
+    }
+    .checkbox__input {
+        display: none;
+        &:checked + .checkbox__lable::after{
+                transform: scale(1);
+        }
+    }
+    .checkbox__lable {
+        font-size: 16px;
+        line-height: 24px;
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        a {
+            text-decoration: underline;
+        }
+    }
+    .checkbox__lable::before {
+        content: '';
+        align-self: flex-start;
+        flex: 0 0 24px;
+        height: 24px;
+        background-color: #fff;
+        border-radius: 4px;
+        margin: 0px 10px 0px 0px;
+    }
+
+    .checkbox__lable::after {
+        content: '\ea10';
+        transition: all 0.1s;
+        font-size: 12px;
+        font-family: 'icomoon';
+        position: absolute;
+        height: 24px;
+        width: 24px;
+        text-align: center;
+        border-radius: 4px;
+        color: #fff;
+        background-color: #4066A5;
+        transform: scale(0);
     }
 
     .header__baseline{
@@ -339,4 +387,7 @@ li{
         }
         
     }
+}
+._error {
+        box-shadow: 0 0 15px red;
 }
