@@ -16,18 +16,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let formData = new FormData(form);
 
         if (error === 0) {
-            let response = await fetch('#', {
-                method: 'POST',
-                body: formData}
-            );
-            if (response.ok){
-                let result = await response.json();
-                alert(result.message);
-                formPreview.innerHTML = '';
-                form.reset();
-            } else {
 
-            }
+            form.submit();
+            window.location.href = 'success.html';
+            
+            
         } else {
             if (messages.length > 0 ) {
                 errorElement.innerText = messages.join(', ');
@@ -83,56 +76,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function succesScreen() {
-        let element = document.getElementById('header__content');
-        element.innerHTML = `<div class="header__content">
-        <h1 class="header__content-heading">Subscribe to fuck</h1>
-        <p class="header__content-text">Subscribe to our newsletter and get 10% discount on pineapple glasses.
-        </p>
-        <div class="wrapper">
-            <div class="form">
-                <form action="#" id="form" class="form__input">
-                    <input type="text" id="formEmail" name="email" placeholder="Type your email address here…" class="form__input _req _email">
-                    <button class="input_btn" type="submit">
-                        <img src="images/ic_arrow.svg" alt="">
-                    </button>
-                    <span id="errorSpan"></span>
-
-                    <div class="wrapper">
-                    <div class="checkbox">
-                        <input id="formAgreement" type="checkbox" name="agreement" class="checkbox__input _req">
-                        <label for="formAgreement" class="checkbox__lable" ><span> I agree pissssssss <a href="#">terms of service</a></span></label>
-                    </div>
-                </div>
-
-                </form>
-            </div>
+        document.getElementById('content').innerHTML = `
+        
+        <div class="wrapper" id='content'>            
+            <img src="images/ic_success.svg" alt="succesimg">
+            <h1 class="header__content-heading--success">Thanks for subscribing!</h1>
+            <p class="header__content-text--succes">You have successfully subscribed to our email listing. Check your email for the discount code.</p>
         </div>
-        <!-- <label class="label__container">I agree to <a href="#">terms of service</a>
-            <input type="checkbox" id="checkbox" class="_req">
-            <span class="header__content-checkmark"></span>
-            <span class="error" style="display: block;"></span>
-        </label> -->
-
-        <div class="header__baseline"></div>
-
-        <div class="header__social">
-
-            <a class="header__social-facebook" href="#"></a>
-
-
-            <a class="header__social-instagram" href="#"></a>
-
-
-
-            <a class="header__social-twitter" href="#"></a>
-
-
-            <a class="header__social-youtube" href="#"></a>
-
-        </div>
-    </div>`
+        `;
     }
-
 });
 
 
