@@ -6,7 +6,9 @@
     }
 }
 @media(max-width: 375px){
-
+    .checkbox {
+        margin-top: 20px;
+    }
     .header__inner {
         display: none;
     }
@@ -258,8 +260,5 @@
         }
         
     }
-
-
-
 
 }
