@@ -1,3 +1,52 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once 'classes/user.php';
+
+$objUser = new User();
+
+// GET
+if (isset($_GET['edit_id'])) {
+    $id = $_GET['edit_id'];
+    $stmt = $objUser->runQuery("SELECT * FROM crud_users WHERE id=:id");
+    $stmt->execute(array(":id" => $id));
+    $rowUser = $stmt->fetch(PDO::FETCH_ASSOC);
+} else {
+    $id = null;
+    $rowUser = null;
+}
+
+//POST
+
+if (isset($_POST['btn'])) {
+    $email = strip_tags($_POST['email']);
+
+    try {
+        if ($id != null) {
+            if ($objUser->update($email, $id)) {
+                $objUser->redirect('success.html?updatet');
+            }
+        } else {
+            if ($objUser->insert($email)) {
+                $objUser->redirect('success.html?inserted');
+            } else {
+                $objUser->redirect('index.php?error');
+            }
+        }
+    } catch (PDOException $e) {
+        echo $e->getMessage();
+    }
+}
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,20 +137,19 @@
                     </p>
                     <div class="wrapper">
                         <div class="form">
-                            <form action="#" id="form" class="form__input">
-                                <input type="text" id="formEmail" name="email"
-                                    placeholder="Type your email address here…" class="form__input _req _email">
-                                <button class="input_btn" type="submit">
+                            <form action="#" id="form" class="form__input" method="post">
+                                <input type="text" id="formEmail" name="email" placeholder="Type your email address here…" class="form__input _req _email" value="<?php print($rowUser['email']); ?>">
+
+                                <button class="input_btn" type="submit" name="btn">
                                     <img src="images/ic_arrow.svg" alt="">
                                 </button>
+
                                 <span id="errorSpan"></span>
 
                                 <div class="wrapper">
                                     <div class="checkbox">
-                                        <input id="formAgreement" type="checkbox" name="agreement"
-                                            class="checkbox__input _req">
-                                        <label for="formAgreement" class="checkbox__lable"><span> I agree to <a
-                                                    href="#">terms of service</a></span></label>
+                                        <input id="formAgreement" type="checkbox" name="agreement" class="checkbox__input _req">
+                                        <label for="formAgreement" class="checkbox__lable"><span> I agree to <a href="#">terms of service</a></span></label>
                                     </div>
                                 </div>
 
